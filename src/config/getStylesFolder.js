@@ -17,7 +17,7 @@ const walkSync = (dir, dirList) => {
 };
 
 module.exports = () => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     const rootFiles = fs.readdirSync('./').filter(dir => dir !== 'node_modules');
 
     // get all file / directory names in root
@@ -26,8 +26,8 @@ module.exports = () => {
       const fileIsDirectory = fs.statSync(`./${file}`).isDirectory();
 
       if (fileIsDirectory) {
-        // if it's a directory, check if it's a component directory
-        if (file.toLowerCase() === 'components') {
+        // if it's a directory, check if it's a styles directory
+        if (file.toLowerCase().includes('style')) {
           // if it is, great! we're done, return the folder path
           resolve(file);
         }
@@ -37,14 +37,9 @@ module.exports = () => {
           // if it's a src folder, check the files in that folder
           const srcDirectories = walkSync('./src');
 
-          // check if one of the src directories is the component directory
-          if (srcDirectories.includes('src/components')) {
-            resolve('./src/components');
-          }
-
           // if not, check all of the folders in the src directory
           srcDirectories.forEach((dir) => {
-            if (dir.includes('components')) {
+            if (dir.includes('style')) {
               resolve(dir);
             }
           });
@@ -54,7 +49,7 @@ module.exports = () => {
         const otherDirectories = walkSync('./');
 
         otherDirectories.forEach((dir) => {
-          if (dir.includes('components')) {
+          if (dir.includes('style')) {
             resolve(dir);
           }
         });
@@ -62,6 +57,6 @@ module.exports = () => {
     });
 
     // if all of this fails, prompt the user for their components folder
-    reject('Could not find components folder');
+    resolve('Could not find styles folder');
   });
 };

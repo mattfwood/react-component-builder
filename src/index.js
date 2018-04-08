@@ -4,7 +4,7 @@ const buildConfig = require('./config/buildConfig');
 const chalk = require('chalk');
 
 const reactComponentBuilder = (cli) => {
-  // console.log(cli);
+  console.log(cli.inputs);
   const config = getConfig();
 
   // check for configuration in package.json
