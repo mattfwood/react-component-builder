@@ -1,10 +1,10 @@
-# react-component-generate [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+# react-component-builder [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
 > Generate React component boilerplate including stylesheets and unit tests.
 
 ## Installation
 
 ```sh
-$ npm install --save react-component-generate
+$ npm install --save react-component-builder
 ```
 
 ## Usage
@@ -17,9 +17,9 @@ $ rcg [Component Name] [--Options]
 MIT © [Matt Wood]()
 
 
-[npm-image]: https://badge.fury.io/js/react-component-generate.svg
-[npm-url]: https://npmjs.org/package/react-component-generate
-[travis-image]: https://travis-ci.org/mattfwood/react-component-generate.svg?branch=master
-[travis-url]: https://travis-ci.org/mattfwood/react-component-generate
-[daviddm-image]: https://david-dm.org/mattfwood/react-component-generate.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/mattfwood/react-component-generate
+[npm-image]: https://badge.fury.io/js/react-component-builder.svg
+[npm-url]: https://npmjs.org/package/react-component-builder
+[travis-image]: https://travis-ci.org/mattfwood/react-component-builder.svg?branch=master
+[travis-url]: https://travis-ci.org/mattfwood/react-component-builder
+[daviddm-image]: https://david-dm.org/mattfwood/react-component-builder.svg?theme=shields.io
+[daviddm-url]: https://david-dm.org/mattfwood/react-component-builder

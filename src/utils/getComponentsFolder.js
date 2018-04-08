@@ -17,7 +17,8 @@ const walkSync = (dir, dirList) => {
 
 module.exports = () => {
   return new Promise((resolve, reject) => {
-    const rootFiles = fs.readdirSync('./');
+    const rootFiles = fs.readdirSync('./').filter(dir => dir !== 'node_modules');
+    console.log(rootFiles);
 
     // get all file / directory names in root
     rootFiles.forEach((file) => {
@@ -49,6 +50,7 @@ module.exports = () => {
           });
         }
 
+        // if it's not in the src folder, check all directories
         const otherDirectories = walkSync('./');
 
         otherDirectories.forEach((dir) => {
@@ -56,8 +58,6 @@ module.exports = () => {
             resolve(dir);
           }
         });
-
-        // if it's not a src folder, check all directories
       }
     });
 

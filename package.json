@@ -1,8 +1,8 @@
 {
-  "name": "react-component-generate",
+  "name": "react-component-builder",
   "version": "0.0.0",
   "description":
-    "Generate React component boilerplate including stylesheets and unit tests.",
+    "Build React component boilerplate including stylesheets and unit tests.",
   "homepage": "",
   "author": {
     "name": "Matt Wood",
@@ -10,7 +10,7 @@
     "url": ""
   },
   "files": ["lib"],
-  "main": "lib/index.js",
+  "main": "src/index.js",
   "keywords": [
     "React",
     "component",
@@ -20,6 +20,7 @@
     "utility"
   ],
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-jest": "^22.4.3",
     "babel-plugin-external-helpers": "^6.22.0",
@@ -36,10 +37,7 @@
     "lint-staged": "^6.1.1",
     "nsp": "^2.8.0",
     "prettier": "^1.11.1",
-    "regenerator-runtime": "^0.11.1",
-    "rollup-plugin-babel": "^3.0.3",
-    "rollup-plugin-commonjs": "^9.1.0",
-    "rollup-plugin-node-resolve": "^3.3.0"
+    "regenerator-runtime": "^0.11.1"
   },
   "engines": {
     "npm": ">= 4.0.0"
@@ -59,7 +57,7 @@
     "precommit": "lint-staged && jest",
     "test": "jest --verbose",
     "build": "rollup -c",
-    "postinstall": "yarn build"
+    "compile": "babel src -d lib"
   },
   "lint-staged": {
     "*.js": ["eslint --fix", "git add"],
@@ -82,7 +80,7 @@
     },
     "plugins": ["prettier"]
   },
-  "repository": "mattfwood/react-component-generate",
+  "repository": "mattfwood/react-component-builder",
   "jest": {
     "testEnvironment": "node",
     "transform": {
@@ -90,12 +88,12 @@
       "^.+\\.js$": "babel-jest"
     }
   },
-  "reactComponentGenerator": {
+  "reactComponentBuilder": {
     "componentOutput": "./src/components",
     "stylesheetOutput": "./src/stylesheets"
   },
   "license": "MIT",
   "bin": {
-    "rcg": "lib/index.js"
+    "rcb": "src/cli.js"
   }
 }
