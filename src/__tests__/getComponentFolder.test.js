@@ -5,7 +5,7 @@ describe('getComponentFolder', () => {
     getComponentFolder()
       .then((result) => {
         console.log(result);
-        expect(result).toEqual('lib/__tests__/components');
+        expect(result).toEqual('src/__tests__/components');
         done();
       });
   });

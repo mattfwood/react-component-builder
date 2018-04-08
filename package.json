@@ -3,11 +3,11 @@
   "version": "0.0.0",
   "description":
     "Build React component boilerplate including stylesheets and unit tests.",
-  "homepage": "",
+  "homepage": "https://github.com/mattfwood/react-component-builder",
   "author": {
     "name": "Matt Wood",
     "email": "m.wood0904@gmail.com",
-    "url": ""
+    "url": "https://github.com/mattfwood/"
   },
   "files": ["lib"],
   "main": "src/index.js",
@@ -80,7 +80,7 @@
     },
     "plugins": ["prettier"]
   },
-  "repository": "mattfwood/react-component-builder",
+  "repository": "https://github.com/mattfwood/react-component-builder",
   "jest": {
     "testEnvironment": "node",
     "transform": {
