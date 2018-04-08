@@ -4,7 +4,7 @@
 ## Installation
 
 ```sh
-$ npm install --save react-component-builder
+$ npm install -g react-component-builder
 ```
 
 ## Usage
