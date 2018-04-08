@@ -1,0 +1,9 @@
+{
+  "generator-node": {
+    "promptValues": {
+      "authorName": "Matt Wood",
+      "authorEmail": "m.wood0904@gmail.com",
+      "authorUrl": ""
+    }
+  }
+}

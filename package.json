@@ -1,0 +1,101 @@
+{
+  "name": "react-component-generate",
+  "version": "0.0.0",
+  "description":
+    "Generate React component boilerplate including stylesheets and unit tests.",
+  "homepage": "",
+  "author": {
+    "name": "Matt Wood",
+    "email": "m.wood0904@gmail.com",
+    "url": ""
+  },
+  "files": ["lib"],
+  "main": "lib/index.js",
+  "keywords": [
+    "React",
+    "component",
+    "generator",
+    "generate",
+    "tool",
+    "utility"
+  ],
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-jest": "^22.4.3",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-env": "^1.6.1",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-config-xo": "^0.20.1",
+    "eslint-plugin-import": "^2.10.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "husky": "^0.14.3",
+    "jest": "^22.0.6",
+    "lec": "^1.0.1",
+    "lint-staged": "^6.1.1",
+    "nsp": "^2.8.0",
+    "prettier": "^1.11.1",
+    "regenerator-runtime": "^0.11.1",
+    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-commonjs": "^9.1.0",
+    "rollup-plugin-node-resolve": "^3.3.0"
+  },
+  "engines": {
+    "npm": ">= 4.0.0"
+  },
+  "dependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "chalk": "^2.3.2",
+    "generator-node": "^2.4.0",
+    "global": "^4.3.2",
+    "inquirer": "^5.2.0",
+    "meow": "^3.7.0",
+    "rollup": "^0.57.1"
+  },
+  "scripts": {
+    "prepublishOnly": "lec lib/cli.js -c LF && nsp check",
+    "pretest": "eslint .",
+    "precommit": "lint-staged",
+    "test": "jest --verbose",
+    "build": "rollup -c",
+    "postinstall": "yarn build"
+  },
+  "lint-staged": {
+    "*.js": ["eslint --fix", "git add"],
+    "*.json": ["prettier --write", "git add"]
+  },
+  "eslintConfig": {
+    "extends": ["xo", "prettier"],
+    "env": {
+      "jest": true,
+      "node": true
+    },
+    "rules": {
+      "prettier/prettier": [
+        "error",
+        {
+          "singleQuote": true,
+          "printWidth": 90
+        }
+      ]
+    },
+    "plugins": ["prettier"]
+  },
+  "repository": "mattfwood/react-component-generate",
+  "jest": {
+    "testEnvironment": "node",
+    "transform": {
+      "^.+\\.jsx$": "babel-jest",
+      "^.+\\.js$": "babel-jest"
+    }
+  },
+  "reactComponentGenerator": {
+    "componentOutput": "./src/components",
+    "stylesheetOutput": "./src/stylesheets"
+  },
+  "license": "MIT",
+  "bin": {
+    "rcg": "lib/index.js"
+  }
+}
