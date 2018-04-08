@@ -56,7 +56,7 @@
   "scripts": {
     "prepublishOnly": "lec lib/cli.js -c LF && nsp check",
     "pretest": "eslint .",
-    "precommit": "lint-staged",
+    "precommit": "lint-staged && jest",
     "test": "jest --verbose",
     "build": "rollup -c",
     "postinstall": "yarn build"
