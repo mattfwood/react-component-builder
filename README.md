@@ -9,10 +9,8 @@ $ npm install --save react-component-generate
 
 ## Usage
 
-```js
-const reactComponentGenerate = require('react-component-generate');
-
-reactComponentGenerate('Rainbow');
+```bash
+$ rcg [Component Name] [--Options]
 ```
 ## License
 
