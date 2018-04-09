@@ -1,8 +1,8 @@
 Arguments: 
-  /usr/bin/node /usr/share/yarn/bin/yarn.js unlink
+  /usr/bin/node /usr/share/yarn/bin/yarn.js test
 
 PATH: 
-  /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
+  /home/mwood/.rvm/gems/ruby-2.4.1/bin:/home/mwood/.rvm/gems/ruby-2.4.1@global/bin:/home/mwood/.rvm/rubies/ruby-2.4.1/bin:/home/mwood/bin:/home/mwood/.local/bin:/home/mwood/bin:/home/mwood/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/mwood/.rvm/bin:/home/mwood/.rvm/bin:/home/mwood/.yarn/bin:/home/mwood/.rvm/bin:/home/mwood/.rvm/bin:/home/mwood/.yarn/bin
 
 Yarn version: 
   1.5.1
@@ -17,16 +17,15 @@ npm manifest:
   {
     "name": "react-component-builder",
     "version": "0.0.0",
-    "description": "Build React component boilerplate including stylesheets and unit tests.",
-    "homepage": "",
+    "description":
+      "Build React component boilerplate including stylesheets and unit tests.",
+    "homepage": "https://github.com/mattfwood/react-component-builder",
     "author": {
       "name": "Matt Wood",
       "email": "m.wood0904@gmail.com",
-      "url": ""
+      "url": "https://github.com/mattfwood/"
     },
-    "files": [
-      "lib"
-    ],
+    "files": ["lib"],
     "main": "src/index.js",
     "keywords": [
       "React",
@@ -66,7 +65,8 @@ npm manifest:
       "global": "^4.3.2",
       "inquirer": "^5.2.0",
       "meow": "^3.7.0",
-      "rollup": "^0.57.1"
+      "rollup": "^0.57.1",
+      "walk-sync": "^0.3.2"
     },
     "scripts": {
       "prepublishOnly": "lec lib/cli.js -c LF && nsp check",
@@ -77,20 +77,11 @@ npm manifest:
       "compile": "babel src -d lib"
     },
     "lint-staged": {
-      "*.js": [
-        "eslint --fix",
-        "git add"
-      ],
-      "*.json": [
-        "prettier --write",
-        "git add"
-      ]
+      "*.js": ["eslint --fix", "git add"],
+      "*.json": ["prettier --write", "git add"]
     },
     "eslintConfig": {
-      "extends": [
-        "xo",
-        "prettier"
-      ],
+      "extends": ["xo", "prettier"],
       "env": {
         "jest": true,
         "node": true
@@ -104,11 +95,9 @@ npm manifest:
           }
         ]
       },
-      "plugins": [
-        "prettier"
-      ]
+      "plugins": ["prettier"]
     },
-    "repository": "mattfwood/react-component-builder",
+    "repository": "https://github.com/mattfwood/react-component-builder",
     "jest": {
       "testEnvironment": "node",
       "transform": {
@@ -116,13 +105,13 @@ npm manifest:
         "^.+\\.js$": "babel-jest"
       }
     },
-    "reactComponentBuildera": {
+    "reactComponentBuilder": {
       "componentOutput": "./src/components",
       "stylesheetOutput": "./src/stylesheets"
     },
     "license": "MIT",
     "bin": {
-      "rcg": "src/index.js"
+      "rcb": "src/cli.js"
     }
   }
 
@@ -1663,6 +1652,10 @@ Lockfile:
   elegant-spinner@^1.0.1:
     version "1.0.1"
     resolved "https://registry.yarnpkg.com/elegant-spinner/-/elegant-spinner-1.0.1.tgz#db043521c95d7e303fd8f345bedc3349cfb0729e"
+  
+  ensure-posix-path@^1.0.0:
+    version "1.0.2"
+    resolved "https://registry.yarnpkg.com/ensure-posix-path/-/ensure-posix-path-1.0.2.tgz#a65b3e42d0b71cfc585eb774f9943c8d9b91b0c2"
   
   error-ex@^1.2.0, error-ex@^1.3.1:
     version "1.3.1"
@@ -3731,6 +3724,12 @@ Lockfile:
     dependencies:
       object-visit "^1.0.0"
   
+  matcher-collection@^1.0.0:
+    version "1.0.5"
+    resolved "https://registry.yarnpkg.com/matcher-collection/-/matcher-collection-1.0.5.tgz#2ee095438372cb8884f058234138c05c644ec339"
+    dependencies:
+      minimatch "^3.0.2"
+  
   mem-fs-editor@^3.0.2:
     version "3.0.2"
     resolved "https://registry.yarnpkg.com/mem-fs-editor/-/mem-fs-editor-3.0.2.tgz#dd0a6eaf2bb8a6b37740067aa549eb530105af9f"
@@ -5609,6 +5608,13 @@ Lockfile:
     dependencies:
       browser-process-hrtime "^0.1.2"
   
+  walk-sync@^0.3.2:
+    version "0.3.2"
+    resolved "https://registry.yarnpkg.com/walk-sync/-/walk-sync-0.3.2.tgz#4827280afc42d0e035367c4a4e31eeac0d136f75"
+    dependencies:
+      ensure-posix-path "^1.0.0"
+      matcher-collection "^1.0.0"
+  
   walker@~1.0.5:
     version "1.0.7"
     resolved "https://registry.yarnpkg.com/walker/-/walker-1.0.7.tgz#2f7f9b8fd10d677262b18a884e28d19618e028fb"
@@ -5812,10 +5818,17 @@ Lockfile:
       yeoman-environment "^2.0.5"
 
 Trace: 
-  Error: No registered module found called "react-component-builder".
-      at new MessageError (/usr/share/yarn/lib/cli.js:186:110)
-      at Object.<anonymous> (/usr/share/yarn/lib/cli.js:87795:15)
-      at Generator.next (<anonymous>)
-      at step (/usr/share/yarn/lib/cli.js:98:30)
-      at /usr/share/yarn/lib/cli.js:109:13
-      at <anonymous>
+  Error: Command failed.
+  Exit code: 1
+  Command: sh
+  Arguments: -c jest --verbose
+  Directory: /home/mwood/Projects/react-component-builder
+  Output:
+  
+      at ProcessTermError.MessageError (/usr/share/yarn/lib/cli.js:186:110)
+      at new ProcessTermError (/usr/share/yarn/lib/cli.js:226:113)
+      at ChildProcess.<anonymous> (/usr/share/yarn/lib/cli.js:30281:17)
+      at emitTwo (events.js:126:13)
+      at ChildProcess.emit (events.js:214:7)
+      at maybeClose (internal/child_process.js:925:16)
+      at Process.ChildProcess._handle.onexit (internal/child_process.js:209:5)
